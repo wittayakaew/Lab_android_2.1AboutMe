@@ -14,7 +14,7 @@ import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+private val myName: MyName = MyName("Wittaya  Netsawnag","wit55")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                 updateNickname(it)
             }
         }
+        binding.myName = this@MainActivity.myName
 
     }
 
@@ -33,10 +34,11 @@ class MainActivity : AppCompatActivity() {
     private fun addNickname(view: View){
 
         binding.apply {
-            binding.nicknameText.text = binding.nicknameEdit.text
-            binding.nicknameEdit.visibility = View.GONE
-            binding.nicknameText.visibility = View.VISIBLE
-            binding.doneButton.visibility = View.GONE
+            myName?.nickname = nicknameEdit.text.toString()
+            nicknameEdit.visibility = View.GONE
+            nicknameText.visibility = View.VISIBLE
+            doneButton.visibility = View.GONE
+            invalidateAll()
             //hide the keyboard
             val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(view.windowToken,0)
