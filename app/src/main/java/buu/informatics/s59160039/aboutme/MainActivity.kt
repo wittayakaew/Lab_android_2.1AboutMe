@@ -47,6 +47,7 @@ private val myName: MyName = MyName("Wittaya  Netsawnag","wit55")
 
     private fun updateNickname(view: View){
 
+//binding
 
         binding.apply {
             nicknameEdit.visibility = View.VISIBLE
